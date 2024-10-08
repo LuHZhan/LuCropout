@@ -6,8 +6,12 @@
 #include "Kismet/KismetSystemLibrary.h"
 
 
-void UOutputSubsystem::ContainerPrint(const TArray<FString>& Outputs, const FGameplayTag OutputTag, const FString& SuffixStr)
+void UOutputSubsystem::ContainerPrint(const TArray<FString>& Outputs, const FGameplayTag OutputTag, const FString& SuffixStr, bool bForceOutput)
 {
+	if (bForceOutput)
+	{
+		AddOutputTag(OutputTag);
+	}
 	if (OutputTagContainer.HasTag(OutputTag))
 	{
 		FString TotalOutputStr;

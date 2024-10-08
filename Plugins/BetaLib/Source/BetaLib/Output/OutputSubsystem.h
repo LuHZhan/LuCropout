@@ -16,8 +16,8 @@ class BETALIB_API UOutputSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, Category="PC")
-	void ContainerPrint(const TArray<FString>& Outputs, const FGameplayTag OutputTag, const FString& SuffixStr = TEXT("   "));
+	UFUNCTION(BlueprintCallable, Category="CPrint")
+	void ContainerPrint(const TArray<FString>& Outputs, const FGameplayTag OutputTag, const FString& SuffixStr = TEXT("   "), bool bForceOutput = true);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	TArray<FString> GetAllTag() const
@@ -34,6 +34,12 @@ public:
 	void SetOutputTag(const FGameplayTagContainer& Tags)
 	{
 		OutputTagContainer = Tags;
+	}
+
+	UFUNCTION(BlueprintCallable)
+	void AddOutputTag(const FGameplayTag& Tag)
+	{
+		OutputTagContainer.AddTag(Tag);
 	}
 
 private:
