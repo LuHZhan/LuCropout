@@ -14,7 +14,7 @@ void UOutputSubsystem::ContainerPrint(const TArray<FString>& Outputs, const FGam
 	}
 	if (OutputTagContainer.HasTag(OutputTag))
 	{
-		FString TotalOutputStr;
+		FString TotalOutputStr = OutputTag.ToString() + SuffixStr;
 		for (const auto& Output : Outputs)
 		{
 			TotalOutputStr.Append(Output);
